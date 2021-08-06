@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import {increment, decrement, incrementAsync} from "../action/count";
+import {Button} from "antd";
 
 function CountFunc() {
     const [num, setNum] = React.useState(20)
@@ -28,6 +29,7 @@ function CountFunc() {
             <h2>hooks测试----{num}----{name}</h2>
             <button onClick={addIt}>+1s</button>
             <input onInput={() => {console.log(inRef.current.value)}} ref={inRef} type="text"/>
+            <Button type="primary">测试</Button>
         </Fragment>
     )
 }

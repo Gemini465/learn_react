@@ -1,5 +1,6 @@
 import Count from './redux/container/count'
 import Person from './redux/container/person'
+import './App.less'
 
 function App() {
   return (
