@@ -8,9 +8,20 @@ const service = axios.create({
    headers: ''
 })
 
-service.interceptors.request.use()
+service.interceptors.request.use(
+   config => {
+      if (config.method === 'get') {
+         config.params._t = Date.now()
+      }
+      console.log(config)
+      return config
+   }, error => {
+      return Promise.reject(error)
+   }
+)
 
 service.interceptors.response.use(response => {
+   console.log('response', response)
    const { data } = response
    return data
 }, error => {

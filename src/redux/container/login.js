@@ -4,7 +4,6 @@ import {SmileOutlined, SendOutlined} from "@ant-design/icons";
 import {connect} from 'react-redux';
 import {Redirect} from "react-router-dom";
 import {getUserInfo} from "../action/login";
-import LinkA from '../../components/link';
 import '../../style/login.less'
 
 class Login extends Component {
@@ -14,10 +13,12 @@ class Login extends Component {
       target: '_black',
       text: '粤ICP备19121998号'
    }
-   handleSubmit = (value) => {
-      console.log(this.props)
-      console.log(value)
-      this.props.getUserInfo(value)
+   handleSubmit = async value => {
+      console.log('props', this.props)
+      console.log('form value', value)
+      this.props.getUserInfo(
+         {username: btoa(value.username), password: btoa(value.password)}
+      )
    }
    validatorPwd = (rule, value, callback) => {
       // 无论验证成功与否callback()必须调用
@@ -66,7 +67,7 @@ class Login extends Component {
             </div>
             <div className='footer'>
                <div className='content'>
-                  Made with ❤ by XT&nbsp;<LinkA params={this.state.params}/>
+                  Made with ❤ by XT
                </div>
             </div>
          </div>
