@@ -8,14 +8,7 @@ import '../../style/login.less'
 
 class Login extends Component {
    loginFormRef = React.createRef()
-   state = {
-      href: 'http://beian.miit.gov.cn/',
-      target: '_black',
-      text: '粤ICP备19121998号'
-   }
    handleSubmit = async value => {
-      console.log('props', this.props)
-      console.log('form value', value)
       this.props.getUserInfo(
          {username: btoa(value.username), password: btoa(value.password)}
       )
@@ -32,7 +25,7 @@ class Login extends Component {
    render() {
       const {userInfo} = this.props
       if(userInfo._id){
-         return <Redirect to='/home'/>
+         return <Redirect to='/admin'/>
       }
       return (
          <div className='login'>
@@ -64,11 +57,6 @@ class Login extends Component {
                      </Form.Item>
                   </Form>
                </section>
-            </div>
-            <div className='footer'>
-               <div className='content'>
-                  Made with ❤ by XT
-               </div>
             </div>
          </div>
       );

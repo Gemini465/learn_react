@@ -10,10 +10,9 @@ const service = axios.create({
 
 service.interceptors.request.use(
    config => {
-      if (config.method === 'get') {
+      if (config.method === 'get' && config.params) {
          config.params._t = Date.now()
       }
-      console.log(config)
       return config
    }, error => {
       return Promise.reject(error)
@@ -21,9 +20,11 @@ service.interceptors.request.use(
 )
 
 service.interceptors.response.use(response => {
-   console.log('response', response)
-   const { data } = response
-   return data
+   if (response.status === 200) {
+      return response.data
+   } else {
+      return response
+   }
 }, error => {
    if (error.response) {
       switch (error.response.status) {

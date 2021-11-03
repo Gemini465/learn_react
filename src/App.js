@@ -6,33 +6,36 @@ import Admin from "./pages/admin/admin";
 import Login from "./redux/container/login";
 
 class App extends Component {
-   state = {
-      renderError: false
-   }
-   static getDerivedStateFromError() {
-      return {
-         renderError: true
-      }
-   }
-   componentDidCatch(error, errorInfo) {
-      this.setState({
-         renderError: true
-      })
-   }
-   render() {
-      const {renderError} = this.state
-      if (renderError) {
-         return <Loading/>
-      }
-      const user = store.get('user_key')
-      store.user = user
-      return (
-         <Switch>
-            <Route path={"/"} component={Login}/>
-            <Route exact path={"/admin"} component={Admin}/>
-         </Switch>
-      );
-   }
+    state = {
+        renderError: false
+    }
+
+    static getDerivedStateFromError() {
+        return {
+            renderError: true
+        }
+    }
+
+    componentDidCatch(error, errorInfo) {
+        this.setState({
+            renderError: true
+        })
+    }
+
+    render() {
+        const {renderError} = this.state
+        if (renderError) {
+            return <Loading/>
+        }
+        const user = store.get('user_key')
+        store.user = user
+        return (
+            <Switch>
+                <Route exact path={"/login"} component={Login}></Route>
+                <Route path={"/"} component={Admin}></Route>
+            </Switch>
+        );
+    }
 }
 
 export default App;

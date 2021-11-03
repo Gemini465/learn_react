@@ -1,0 +1,33 @@
+.left-nav {
+  position: fixed;
+  min-width: 200px;
+  height: 100%;
+  overflow-y: hidden;
+  z-index: 1000;
+
+  .left-nav-header {
+    margin-top: 10px;
+    z-index: 2;
+
+    .left-nav-header-content {
+      height: 30px;
+      line-height: 30px;
+      font-size: 20px;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+  }
+
+  .left-nav-content {
+    height: calc(100% - 30px);
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .left-nav-header-content {
+    display: none;
+  }
+}
