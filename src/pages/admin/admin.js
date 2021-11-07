@@ -14,10 +14,10 @@ const {Sider, Content} = Layout
 
 class Admin extends Component {
     render() {
-        const { userInfo } = this.props
-        if (!userInfo._id) {
-            return <Redirect to="/login"/>
-        }
+        // const { userInfo } = this.props
+        // if (!userInfo._id) {
+        //     return <Redirect to="/login"/>
+        // }
         return (
             <Layout style={{minHeight: '100%'}}>
                 <Sider>

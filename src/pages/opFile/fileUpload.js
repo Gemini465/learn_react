@@ -46,10 +46,7 @@ class FileUpload extends Component {
         })
     }
     confirmUpload = () => {
-        // this.uploadChunks()
-        userApi.mergeFile({fileHash: "adsfasdfasdfas", fileName: "safsd.txt"}).then(res => {
-            console.log(res)
-        })
+        this.uploadChunks()
     }
     request = ({url, method = "post", data, headers = {}}) => {
         return new Promise((resolve, reject) => {
@@ -87,6 +84,7 @@ class FileUpload extends Component {
         const requestList = fileChunks.map((item, index) => {
             const formData = new FormData()
             formData.append("fileHash", fileHash)
+            formData.append("fileIndex", index)
             formData.append("fileChunk", item)
             return {formData, index}
         }).map(({formData, index}) => {
@@ -98,8 +96,11 @@ class FileUpload extends Component {
                 onUploadProgress: this.chunkUploadProgress(fileChunks[index])
             })
         })
-        const res = await Promise.all(requestList)
-        console.log("===", res)
+        Promise.all(requestList).then(async () => {
+            // 切片上传完成请求合并
+            const r = await userApi.mergeFile({fileHash, fileName: file.name})
+            console.log(r)
+        })
     }
     chunkUploadProgress = item => {
         return e => {
@@ -147,7 +148,7 @@ class FileUpload extends Component {
                 <button onClick={this.confirmUpload}>上传</button>
                 <br/>
                 {uploaded}
-                <div style={{width: uploaded, height: "5px", background: "blue", margin: "20px 30px"}}/>
+                <div style={{width: uploaded, height: "5px", background: "blue", margin: "20px 0"}}/>
                 {
                     fileChunks.map((item, index) => {
                         return <div key={index + Math.random()}>
