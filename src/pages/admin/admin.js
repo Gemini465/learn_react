@@ -8,6 +8,7 @@ import LeftNav from '../../redux/container/sideMenu'
 import Home from '../home/home'
 import User from '../user/user'
 import Hook from '../hooks/customText'
+import FileOp from '../opFile/index'
 
 const {Sider, Content} = Layout
 
@@ -31,6 +32,7 @@ class Admin extends Component {
                                 <Route path="/http_user" component={User} />
                                 <Route path='/GraphQL_CRUD' component={User}/>
                                 <Route path="/hooks" component={Hook}/>
+                                <Route path="/aboutFile" component={FileOp}/>
                             </Switch>
                         </Suspense>
                     </Content>

@@ -29,17 +29,9 @@ export function dowmload(resp, fileName) {
             downloadFileName = downloadFileName.substr(downloadFileName.indexOf('=') + 1)
         }
         link.setAttribute('download', downloadFileName)
-        documen.body.appendChild(link)
+        document.body.appendChild(link)
         link.click()
         document.body.removeChild(link)
         window.URL.revokeObjectURL(url)
     }
-}
-
-export function fileUploadReq(file) {
-    let fileName = file.file.name
-    const form = new FormData()
-    form.append('type', 'TMS-FILE')
-    form.append('save', 'save')
-    form.append('file', file.file)
 }

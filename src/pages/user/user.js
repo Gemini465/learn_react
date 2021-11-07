@@ -102,9 +102,15 @@ export default class User extends Component {
     }
     createUser = async () => {
         const res = await userApi.newUser({username: 'root', password: btoa('admin')})
+        if (res.status === 0) {
+            message.success("添加成功")
+        }
     }
     updateUser = async () => {
         const res = await userApi.updateUser({_id: "61758a92f2de034b24f61877", username: 'admin', password: btoa('admin')})
+        if (res.status === 0) {
+            message.success("更新成功")
+        }
     }
     graphqlUser = async () => {
         const query = `

@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
+import React, { Component } from 'react';
 import { Button } from "antd";
 import TextHook from './textHooks'
 import "../../style/text.less"

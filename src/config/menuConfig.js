@@ -7,14 +7,9 @@ const menuList = [
         title: 'http_CRUD',
         key: '/http_user'
     },
-
     {
         title: 'GraphQL_CRUD',
         key: '/GraphQL_CRUD'
-    },
-    {
-        title: 'Typescript',
-        key: '/role'
     },
     {
         title: '虚拟dom',
@@ -24,7 +19,6 @@ const menuList = [
     {
         title: '可视化排序',
         key: '/charts',
-        icon: 'area-chart',
         children: [
             {
                 title: '柱形图',
@@ -56,8 +50,8 @@ const menuList = [
         key: '/hooks'
     },
     {
-        title: '长列表渲染',
-        key: '/bigTable'
+        title: '文件相关',
+        key: '/aboutFile'
     },
     {
         title: 'webSocket',

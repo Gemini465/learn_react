@@ -50,6 +50,13 @@ class User {
         })
     }
 
+    mergeFile(params) {
+        return request({
+            url: '/api/file/mergeFile',
+            method: 'post',
+            data: params
+        })
+    }
 }
 
 export default new User();
