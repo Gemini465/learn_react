@@ -77,10 +77,12 @@ class LeftNav extends Component {
 //     userInfo: PropTypes.object.isRequired,
 // }
 
+// 拿数据
 const mapStateToProps = state => ({
   userInfo: state.login
 });
 
+// 修改数据
 const mapDispatchToProps = dispatch => ({
   setHeadTitle: title => {
     dispatch(setHeaderTitle(title));
