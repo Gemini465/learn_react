@@ -45,9 +45,7 @@ class FileUpload extends Component {
             this.createFileChunk(this.state.file)
         })
     }
-    confirmUpload = () => {
-        this.uploadChunks()
-    }
+
     request = ({url, method = "post", data, headers = {}}) => {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest()
@@ -93,7 +91,10 @@ class FileUpload extends Component {
                 method: "post",
                 data: formData,
                 timeout: 3000000,
-                onUploadProgress: this.chunkUploadProgress(fileChunks[index])
+                onUploadProgress: this.chunkUploadProgress(fileChunks[index]),
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
             })
         })
         Promise.all(requestList).then(async () => {
@@ -145,7 +146,7 @@ class FileUpload extends Component {
         return (
             <div>
                 <input type="file" onChange={this.regularFileUpload}/>
-                <button onClick={this.confirmUpload}>上传</button>
+                <button onClick={this.uploadChunks}>上传</button>
                 <br/>
                 {uploaded}
                 <div style={{width: uploaded, height: "5px", background: "blue", margin: "20px 0"}}/>

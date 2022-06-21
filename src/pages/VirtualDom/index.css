@@ -1,0 +1,12 @@
+.content {
+  width: 500px;
+  height: 70px;
+  border: 1px solid #ccc;
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal !important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

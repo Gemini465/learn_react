@@ -1,20 +1,18 @@
-import React, {Component} from 'react'
-import '../../style/homepage.less'
+import { useState } from 'react';
+import '../../style/homepage.less';
+import { useHistory } from 'react-router-dom';
 
-export default class Home extends Component {
-    state = {
-        homeClassname: 'homepage',
-    }
-    shiftName = () => {
-        this.setState(state => {
-            return {
-                homeClassname: state.homeClassname === 'homepage' ? 'wholeHomepage' : 'homepage'
-            }
-        })
-    }
-    render() {
-        return (
-            <div onClick={this.shiftName} className={this.state.homeClassname}>welcome to NYs2QeMWy</div>
-        )
-    }
-}
+const Home = () => {
+  const [homeClassname, setClassname] = useState('homepage');
+  const { pathname } = useHistory().location;
+  const shiftName = () => {
+    setClassname(homeClassname === 'homepage' ? 'wholeHomepage' : 'homepage');
+  };
+  return (
+    <div onClick={shiftName} className={homeClassname}>
+      welcome to NYs2QeMWy
+    </div>
+  );
+};
+
+export default Home;
